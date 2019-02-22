@@ -1,0 +1,32 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/recommendmovie/recommendmovie",
+    "pages/about/about"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "深秋",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar":{
+    "color":"#666",
+    "selectedColor":"#0084FF",
+    "backgroundColor":"#fff",
+    "list":[
+      {
+        "pagePath":"pages/index/index",
+        "text":"文章"
+      },
+      {
+        "pagePath":"pages/recommendmovie/recommendmovie",
+        "text":"电影推荐"
+      },
+      {
+        "pagePath":"pages/about/about",
+        "text":"关于"
+      }
+    ]
+  }
+}
