@@ -17,16 +17,28 @@
     "list":[
       {
         "pagePath":"pages/index/index",
+        "iconPath":"./img/tabBar/essay-0.png",
+        "selectedIconPath":"./img/tabBar/essay-1.png",
         "text":"文章"
       },
       {
         "pagePath":"pages/recommendmovie/recommendmovie",
+        "iconPath":"./img/tabBar/movie-0.png",
+        "selectedIconPath":"./img/tabBar/movie-1.png",
         "text":"电影推荐"
       },
       {
         "pagePath":"pages/about/about",
+        "iconPath":"./img/tabBar/about-0.png",
+        "selectedIconPath":"./img/tabBar/about-1.png",
         "text":"关于"
       }
     ]
-  }
+  },
+  "plugins": {
+      "sdkPlugin": {
+      "version": "1.16.0",
+      "provider": "wxc6b86e382a1e3294"
+    }
+  } 
 }

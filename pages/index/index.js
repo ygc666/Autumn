@@ -1,54 +1,78 @@
 //index.js
-//获取应用实例
-const app = getApp()
+const LIMIT = 3;
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    isReachEnd:false,//没有更多提示
+    isLoading:false,//加载提示
+    offsetRange:0,//已经加载数据数量
+    essayList:[]
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
+  onReady(options){
+    let that = this;
+    wx.showLoading({
+      title:"加载中",
+      mask:true
     })
-  },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
+    //应用查询对象
+    let Essay = new wx.BaaS.ContentGroup(1551083406801635);
+    console.log(Essay);
+
+    Essay.limit(3).find().then(res=>{
+      // success
+      wx.hideLoading();
+      console.log(res);
+      that.setData({
+        essayList:res.data.objects //数据
       })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
+    }, err => {
+      // err
+      console.log(res)
+      wx.hideLoading();
+    })
+
+  },
+  /**
+   * 页面上拉触底事件处理函数
+   */
+  onReachBottom(){
+    let that = this;
+    console.log("bottom");
+
+    //已获取全部数据
+    if(that.data.isReachEnd){
+      wx.showToast({
+        title: '暂无数据'
+      });
+      return;
+    }
+
+    //计算已加载数据
+    let offsetRange = that.data.offsetRange + LIMIT;
+    that.setData({
+      offsetRange:offsetRange,
+      isLoading:true //正在加载
+    })
+
+    let Essay = new wx.BaaS.ContentGroup(1551083406801635);
+
+    Essay.limit(LIMIT).offset(that.data.offsetRange).find().then(res=>{
+      let objects = res.data.objects;
+
+      if(objects.length == 0){
+        that.setData({
+          isReachEnd:true,//已获取全部数据
+          isLoading:false//加载结束
+        })
+      }else{
+        that.setData({
+          essayList:that.data.essayList.concat(objects),//拼接数据
+          isLoading:false //加载结束
         })
       }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
-  },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+    }, err => {
+      // err
+      console.log(err)
     })
   }
 })
