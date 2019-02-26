@@ -24,7 +24,7 @@
   color: #f3f3f3;
 }
 .pBox{
-  padding: 20px;
+  padding: 30rpx;
 }
 .pBox .p{
   font-size: 26rpx;

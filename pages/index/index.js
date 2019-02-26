@@ -17,7 +17,7 @@ Page({
     //应用查询对象
     let Essay = new wx.BaaS.ContentGroup(1551083406801635);
     console.log(Essay);
-
+    
     Essay.limit(3).find().then(res=>{
       // success
       wx.hideLoading();

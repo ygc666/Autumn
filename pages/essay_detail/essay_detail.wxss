@@ -1,0 +1,28 @@
+.main{
+    width: 100%;
+    text-align: center;
+}
+.main .h1{
+    letter-spacing: 6rpx;
+    font-size: 42rpx;
+    display: block;
+    margin: 30rpx 0 25rpx 0;
+}
+.subsidiary{
+    font-size: 28rpx;
+    letter-spacing: 2rpx;
+    color: #bbb;
+}
+.main .img{
+    height: 400rpx;
+    width: 100%;
+    background-size: 100% 100%;
+    margin-top: 25rpx;
+}
+.main .mid{
+    padding: 30rpx;
+    font-size: 32rpx;
+    letter-spacing: 2rpx;
+    color: #7A7A7A;
+    line-height: 40rpx;
+}

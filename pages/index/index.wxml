@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
   <block wx:for="{{essayList}}" wx:key="*this">
-    <navigator url="" hover-class="active">
+    <navigator url="/pages/essay_detail/essay_detail?id={{item.id}}" hover-class="active">
       <view class="item" >
           <view class="bg" style="background-image: url({{item.cover}});">
             <text class="h2">{{item.title}}</text>
