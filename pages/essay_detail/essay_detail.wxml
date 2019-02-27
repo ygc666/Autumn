@@ -1,11 +1,11 @@
 <view class="main">
-    <text class="h1">以父之名</text>
+    <text class="h1">{{essayList.title}}</text>
     <view class="subsidiary">
-        <text class="time">时间:2019-2-26 </text>
-        <text class="count"> 字数:2841</text>
+        <text class="time">{{time}} </text>
+        <text class="count">{{count}}</text>
     </view>
-    <view style="background-image:url(https://cloud-minapp-24067.cloud.ifanrusercontent.com/1gyTsvPrTYBNaYh4.jpg);" class="img"></view>
+    <view style="background-image:url({{essayList.cover}});" class="img"></view>
     <view class="mid">
-        <wxparser rich-text="" />
+        <wxparser rich-text="{{essayList.content}}" />
     </view>
 </view>

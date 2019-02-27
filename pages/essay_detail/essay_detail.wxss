@@ -25,4 +25,5 @@
     letter-spacing: 2rpx;
     color: #7A7A7A;
     line-height: 40rpx;
+    text-align: left;
 }
